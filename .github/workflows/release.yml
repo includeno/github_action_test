@@ -24,19 +24,22 @@ jobs:
         with:
           java-version: ${{ matrix.java-version }} # Version range or exact version of a Python version to use, using SemVer's version range syntax
           architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
-      
+      #构建应用程序
+      - name: Build with Maven
+        run:
+          mvn clean package -DskipTests=true -Dmaven.javadoc.skip=true -B -V
       #zip the project files
       - name: Build project # This would actually build your project, using zip for an example artifact
         run: |
-          zip -q -r v${{ env.RELEASE_VERSION}}-production.zip .
+          zip -q -r java_v${{ env.RELEASE_VERSION}}-production.zip .
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1 #https://github.com/actions/create-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          tag_name: java_${{ env.TAG_NAME }}
-          release_name: ${{ env.RELEASE_VERSION }}
+          tag_name: java_v${{ env.TAG_NAME }}
+          release_name: java_v${{ env.RELEASE_VERSION }}
           body: |
             Changes in this Release
             - First Change
