@@ -22,7 +22,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v1 #https://github.com/actions/setup-java
         with:
-          java-version: ${{ env.java-version }} # Version range or exact version of a Python version to use, using SemVer's version range syntax
+          java-version: ${{ matrix.java-version }} # Version range or exact version of a Python version to use, using SemVer's version range syntax
           architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
       #构建应用程序
       - name: Build with Maven
