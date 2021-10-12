@@ -1,0 +1,17 @@
+*/target
+target
+
+# idea
+*idea
+*iml
+mvnw*
+
+# vscode
+*.project
+*/.project
+*.classpath
+*/.classpath
+*/.settings/*
+*.settings/*
+*/.*/.*
+*/.*
