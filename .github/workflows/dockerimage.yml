@@ -13,7 +13,6 @@ env:
 jobs:
   build:
     name: Github Action Build Docker Images ---- Java SpringBoot
-    id: Github Action Build Docker Images ---- Java SpringBoot
     runs-on: ubuntu-latest # use latest ubuntu to run the job
     strategy:
       matrix:
