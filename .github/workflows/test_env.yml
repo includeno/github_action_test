@@ -15,13 +15,13 @@ jobs:
     runs-on: ubuntu-latest # use latest ubuntu to run the job
     strategy:
       matrix:
-        python-version: [ '3.9.7' ]
+        python-version: [ '3.9' ]
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2 #https://github.com/actions/setup-python
         with:
           python-version: ${{ matrix.python-version }} # Version range or exact version of a Python version to use, using SemVer's version range syntax
-          architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
+          architecture: 'x86' # optional x64 or x86. Defaults to x64 if not specified
       #设置部分灵活的环境变量
       - name: Sets build date
         run: echo "BUILD_DATE=$(date '+%Y%m%d')" >> $GITHUB_ENV
