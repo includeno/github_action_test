@@ -17,11 +17,10 @@ jobs:
       matrix:
         python-version: [ '3.9' ]
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2 #https://github.com/actions/setup-python
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4 #https://github.com/actions/setup-python
         with:
           python-version: ${{ matrix.python-version }} # Version range or exact version of a Python version to use, using SemVer's version range syntax
-          architecture: 'x86' # optional x64 or x86. Defaults to x64 if not specified
       #设置部分灵活的环境变量
       - name: Sets build date
         run: echo "BUILD_DATE=$(date '+%Y%m%d')" >> $GITHUB_ENV
