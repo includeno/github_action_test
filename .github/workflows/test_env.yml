@@ -28,6 +28,8 @@ jobs:
       #设置部分灵活的环境变量
       - name: Set environment variable with current time
         run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
+      - name: Set environment variable with current time
+        run: echo "NOW2=$(date +'%Y-%m-%d%H-%M-%S')" >> $GITHUB_ENV
       
       - name: The job has succeeded
         if: ${{ success() }}
