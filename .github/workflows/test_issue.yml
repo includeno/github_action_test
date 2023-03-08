@@ -3,6 +3,8 @@ name: Issue Pipeline
 on:
   issues:
     types: [opened, edited]
+  issue_comment:
+    types: [created]
 
 jobs:
   build:
@@ -10,7 +12,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Extract issue info
       uses: actions/github-script@v3.2.0
