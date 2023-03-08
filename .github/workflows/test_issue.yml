@@ -1,0 +1,46 @@
+name: Issue Pipeline
+
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Extract issue info
+      uses: actions/github-script@v3.2.0
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const title = github.context.payload.issue.title;
+          const body = github.context.payload.issue.body;
+          const labels = github.context.payload.issue.labels.map(label => label.name);
+          console.log(`Title: ${title}`);
+          console.log(`Body: ${body}`);
+          console.log(`Labels: ${labels}`);
+          console.log(`::set-output name=title::${title}`);
+          console.log(`::set-output name=body::${body}`);
+          console.log(`::set-output name=labels::${labels.join(',')}`);
+
+    - name: Build and test
+      run: |
+        # 编写构建和测试代码
+        echo "Building and testing..."
+
+    - name: Deploy
+      if: github.event.action == 'opened'
+      run: |
+        # 编写发布代码
+        echo "Deploying..."
+
+    - name: Use issue info
+      run: |
+        # 使用 issue 信息
+        echo "Title: ${{ steps.extract.outputs.title }}"
+        echo "Body: ${{ steps.extract.outputs.body }}"
+        echo "Labels: ${{ steps.extract.outputs.labels }}"
