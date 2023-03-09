@@ -18,6 +18,7 @@ jobs:
         echo "Issue title: ${{ github.event.issue.title }}"
         echo "Issue body: ${{ github.event.issue.body }}"
         echo "Issue labels: ${{ github.event.issue.labels }}"
+        echo "Issue labels startswith release: ${{startsWith(github.event.issue.title,'release')}}"
 
     - name: Build and test
       run: |
