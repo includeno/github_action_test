@@ -34,3 +34,9 @@ jobs:
       - name: The job has succeeded
         if: ${{ success() }}
         run: echo "success"
+  release:
+    name: Github Action Build
+    runs-on: ubuntu-latest # use latest ubuntu to run the job
+    steps:
+      - name: print outputs
+        run: echo ${{env.NOW2}}
