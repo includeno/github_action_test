@@ -41,7 +41,8 @@ jobs:
         if: ${{ success() }}
         run: echo "success"
   release:
-    name: Github Action Build
+    name: Release
+    needs: build
     runs-on: ubuntu-latest # use latest ubuntu to run the job
     steps:
       # env只作用于当前job
